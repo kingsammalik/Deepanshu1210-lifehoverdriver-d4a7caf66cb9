@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/timer_relative"
+    android:background="@color/transparent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+
+    <RelativeLayout
+        android:background="@drawable/custom_border_blue"
+        android:padding="20dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relativeLayout">
+
+
+
+            <TextView
+                android:id="@+id/tv_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/timerVal"
+                android:textColor="@color/blue"
+                android:textSize="45sp"
+                />
+
+
+        <LinearLayout
+            android:layout_marginTop="36dp"
+            android:id="@+id/ll_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/tv_timer"
+            android:layout_alignRight="@+id/tv_timer"
+            android:layout_alignEnd="@+id/tv_timer">
+            <Button
+                android:layout_marginRight="5dp"
+                android:background="@drawable/button_round_corner"
+                android:id="@+id/timer_start"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="@string/start" />
+            <Button
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/button_round_corner"
+                android:id="@+id/timer_stop"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:text="@string/stop"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white">
+
+    </LinearLayout>
+
+    <TextView
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:text="Waiting Time"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" />
+
+</RelativeLayout>

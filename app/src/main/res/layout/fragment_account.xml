@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_ten">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mobile_black"
+            android:tint="@color/gray_700" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:text="@string/small_mobile"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_txt_size" />
+
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:singleLine="true"
+                android:text="adkhdakhdakhadkhadkadhkad"
+                android:textColor="@color/gray_700"
+                android:textSize="@dimen/large_txt_size" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_edit_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_edit"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_dimen"
+        android:background="@color/gray_800" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_ten">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_user_black"
+            android:tint="@color/gray_700" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:text="@string/small_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_txt_size" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:singleLine="true"
+                android:text="adkhdakhdakhadkhadkadhkad"
+                android:textColor="@color/gray_700"
+                android:textSize="@dimen/large_txt_size" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_edit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_edit"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_dimen"
+        android:background="@color/gray_800" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:text="@string/ambulance_service"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_txt_size" />
+
+        <TextView
+            android:id="@+id/tv_ambulance_service_provider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="adkhdakhdakhadkhadkadhkad"
+            android:textColor="@color/gray_700"
+            android:textSize="@dimen/large_txt_size" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_dimen"
+        android:background="@color/gray_800" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:text="@string/ambulance_type"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_txt_size" />
+
+        <TextView
+            android:id="@+id/tv_ambulance_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="adkhdakhdakhadkhadkadhkad"
+            android:textColor="@color/gray_700"
+            android:textSize="@dimen/large_txt_size" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_dimen"
+        android:background="@color/gray_800" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/xxx_large_margin"
+        android:background="@color/blue"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/large_txt_size"
+        android:visibility="gone" />
+
+</LinearLayout>

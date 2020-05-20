@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Activity.DriverTrackingActivity"
+    tools:showIn="@layout/driver_tracking_app_bar_layout">
+
+    <LinearLayout
+        android:id="@+id/ll_booking_tracking"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <fragment
+                android:id="@+id/maps"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/iv_tracking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:padding="@dimen/small_dimen_padding"
+                android:src="@drawable/ic_navigate"
+                android:tint="@color/black" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_gravity="bottom|left"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/ic_watch"
+                android:tint="@color/black"/>
+
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            tools:layout_marginBottom="50dp">
+
+            <TextView
+                android:id="@+id/tv_user_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/usericon"
+                android:drawablePadding="@dimen/small_dimen_padding"
+                android:gravity="center"
+                android:padding="@dimen/small_dimen_padding"
+                android:text="hakdhkadhkad"
+                android:textColor="@color/gray_800"
+                android:textSize="@dimen/large_txt_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_dimen"
+                android:background="@color/gray_800" />
+
+            <LinearLayout
+                android:id="@+id/ll_before_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/ll_call_user"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/small_dimen_padding"
+                    android:paddingTop="@dimen/small_dimen_padding">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_menu_call"
+                        android:tint="@color/green" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/call_user"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/large_txt_size"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/line_dimen"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_800" />
+
+                <LinearLayout
+                    android:id="@+id/ll_start_ride"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/small_dimen_padding"
+                    android:paddingTop="@dimen/small_dimen_padding">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_done_green" />
+
+                    <TextView
+                        android:id="@+id/tv_btn_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/arrive_driver"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/large_txt_size"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_stop_ride"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/small_dimen_padding"
+                android:paddingTop="@dimen/small_dimen_padding"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_dot_white"
+                    android:tint="@color/red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/medium_margin"
+                    android:text="@string/stop_ride"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/large_txt_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_fare_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/xxxx_large_margin"
+            android:drawableLeft="@drawable/ic_done_green"
+            android:drawablePadding="@dimen/v_small_dimen_padding"
+            android:gravity="center"
+            android:text="@string/ride_completed"
+            android:textColor="@color/green"
+            android:textSize="@dimen/xx_large_txt_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_amount_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/xxxx_large_margin"
+            android:text="Rs XXXX"
+            android:textColor="@color/gray_700"
+            android:textSize="@dimen/xxxx_large_txt_size" />
+
+        <TextView
+            android:id="@+id/tv_ambulance_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/x_large_margin"
+            android:text="Type : ALS Ambulance"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/large_txt_size" />
+
+        <TextView
+            android:id="@+id/tv_total_fare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="Total Fare : Rs XXXX"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/large_txt_size" />
+
+        <TextView
+            android:id="@+id/tv_total_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/small_margin"
+            android:text="Total Distance : 4 km"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/large_txt_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_dimen"
+            android:layout_marginLeft="@dimen/xxx_large_margin"
+            android:layout_marginRight="@dimen/xxx_large_margin"
+            android:layout_marginTop="@dimen/xxx_large_margin"
+            android:background="@color/gray_800" />
+
+        <Button
+            android:id="@+id/accept_cash"
+            android:background="@color/blue"
+            android:text="Collect Cash"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/x_dimen_padding"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RatingBar
+                android:id="@+id/rb_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin" />
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                android:background="@color/blue"
+                android:padding="@dimen/small_dimen_padding"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x_large_txt_size"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

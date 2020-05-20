@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "348669827980",
+    "firebase_url": "https://cats-e97d6.firebaseio.com",
+    "project_id": "cats-e97d6",
+    "storage_bucket": "cats-e97d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348669827980:android:78e9c02775ee41a3e254a9",
+        "android_client_info": {
+          "package_name": "com.medulance.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348669827980-q7cq431891jdse5kmpde2ae45s0st8bd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQHsVNDqmqw7bQK6S6twK_u09tET2jC1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348669827980-q7cq431891jdse5kmpde2ae45s0st8bd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

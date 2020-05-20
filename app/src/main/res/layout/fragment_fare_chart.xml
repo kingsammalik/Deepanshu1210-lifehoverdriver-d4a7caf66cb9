@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+    </TableLayout>
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tv_table_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textColor="@color/red"
+            android:textSize="18dp"
+            android:text="Weather Table"
+            android:gravity="center"
+            android:layout_span="6">
+        </TextView>
+    </TableRow>
+    <TableRow
+        android:layout_marginTop="10dp"
+        android:id="@+id/tableRow1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum="3">
+        <TextView
+            android:text="Base Price"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+           android:gravity="center"
+            android:typeface="serif"></TextView>
+        <TextView
+            android:text="Base KM"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:typeface="serif"></TextView>
+        <TextView
+            android:text="Per KM"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:typeface="serif"></TextView>
+    </TableRow>
+    <TableRow
+        android:layout_marginTop="10dp"
+        android:id="@+id/tableRow2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:weightSum="3">
+        <TextView
+            android:id="@+id/tv_base_price"
+            android:text="base price"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:typeface="serif"></TextView>
+        <TextView
+            android:id="@+id/tv_base_km"
+            android:text="base km"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:typeface="serif"></TextView>
+        <TextView
+            android:id="@+id/tv_per_km"
+            android:gravity="center"
+            android:text="per km"
+            android:layout_weight="1"
+            android:typeface="serif"></TextView>
+    </TableRow>
+</LinearLayout>

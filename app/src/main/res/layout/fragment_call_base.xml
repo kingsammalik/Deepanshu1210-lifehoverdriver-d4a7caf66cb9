@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/call_base" />
+
+
+    <Button
+        android:id="@+id/call_base"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xxxxx_large_margin"
+        android:background="@color/blue"
+        android:paddingLeft="@dimen/dimen_padding"
+        android:paddingRight="@dimen/dimen_padding"
+        android:text="@string/call_base"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x_large_txt_size" />
+
+</LinearLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/xx_dimen_padding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xxxx_large_margin"
+        android:text="@string/login"
+        android:textColor="@color/gray_800"
+        android:textSize="@dimen/need_txt_size" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_input_layout"
+        android:theme="@style/TextLabel">
+
+        <EditText
+            android:id="@+id/et_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mobile"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@color/gray_800"
+            android:textSize="@dimen/medium_txt_size" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:background="@color/blue"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:padding="@dimen/dimen_padding"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x_large_txt_size" />
+
+    <TextView
+        android:id="@+id/tv_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xx_large_margin"
+        android:padding="@dimen/padding_ten"
+        android:text="@string/forgot_password"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/x_large_txt_size"
+        android:visibility="gone" />
+
+</LinearLayout>

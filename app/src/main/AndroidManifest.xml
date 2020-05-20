@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.medulance.driver">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.lifehover.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permisson.ACCESS_GPS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+
+
+
+    <application
+        android:name="com.medulance.driver.App.MyApplication"
+        android:hardwareAccelerated="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.medulance.driver.Activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCQHsVNDqmqw7bQK6S6twK_u09tET2jC1g" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/app_name" />
+
+        <activity
+            android:name="com.medulance.driver.Activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.medulance.driver.Activity.DriverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.medulance.driver.Activity.ExtraActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.medulance.driver.Activity.DialogActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.medulance.driver.Activity.OTPActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.medulance.driver.Activity.DriverTrackingActivity"
+            android:screenOrientation="portrait" />
+
+
+
+        <service
+            android:name="com.medulance.driver.App.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+
+
+        <service android:name="com.medulance.driver.App.SendService"
+            android:enabled="true"
+            android:exported="false"
+            />
+
+        <receiver android:name="com.medulance.driver.App.ServiceReceiver">
+            <intent-filter>
+                <action android:name="restartApps" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.medulance.driver.App.UpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+                <action android:name="restartApps" />
+            </intent-filter>
+        </receiver>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="db7c93a9820ca7faf412ac1221ff6c91d7a07b06"
+            />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <activity android:name="com.medulance.driver.Activity.BookingDetailsActivity"></activity>
+    </application>
+
+</manifest>
