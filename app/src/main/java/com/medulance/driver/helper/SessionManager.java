@@ -19,6 +19,8 @@ public class SessionManager {
     private static final String BOOKING_ID="booking_id";
     private static final String KEY_IS_LOGGED_IN = "is_logged";
     private static final String KEY_AUTH = "auth_key";
+    private static final String KEY_AMBULANCE_NO = "ambulances_no_key";
+    private static final String KEY_AMBULANCE_ID = "ambulance_id";
     private static final String KEY_USER_ID = "user_id";
     private static final String KEY_BASE_NUMBER = "base_num";
     private static final String KEY_NAME = "name";
@@ -54,6 +56,16 @@ public class SessionManager {
 
     public void setKeyAuth(String keyAuth) {
         editor.putString(KEY_AUTH, keyAuth);
+        editor.commit();
+    }
+
+    public void setAmbulanceID(String id) {
+        editor.putString(KEY_AMBULANCE_ID, id);
+        editor.commit();
+    }
+
+    public void setAmbulanceNO(String id) {
+        editor.putString(KEY_AMBULANCE_NO, id);
         editor.commit();
     }
 
@@ -120,6 +132,10 @@ public class SessionManager {
         return pref.getLong(KEY_WAITING_TIME, 1);
     }
 
+    public String getAmbulanceID(){
+        return pref.getString(KEY_AMBULANCE_ID, "0");
+    }
+
     public int getKeyBookingStatus() {
         return pref.getInt(KEY_BOOKING_STATUS, -1);
     }
@@ -130,6 +146,10 @@ public class SessionManager {
 
     public String getKeyAuth() {
         return pref.getString(KEY_AUTH, null);
+    }
+
+    public String getKeyAmbulanceNo() {
+        return pref.getString(KEY_AMBULANCE_NO, null);
     }
 
     public String getKeyUserId() {

@@ -359,6 +359,8 @@ public class DriverActivity extends AppCompatActivity implements View.OnClickLis
 
     private void getLogout() {
         showLoader();
+        Intent myService = new Intent(DriverActivity.this, SendService.class);
+        stopService(myService);
         okHttpAPICalls.run(Constants.RequestTags.DRIVER_LOGOUT, null);
     }
 

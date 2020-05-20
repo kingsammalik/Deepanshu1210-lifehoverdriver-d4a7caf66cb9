@@ -286,6 +286,7 @@ public class SplashActivity extends AppCompatActivity implements IOkHttpNotify {
     @Override
     public void onHttpRequestSuccess(String requestType, Response response) throws IOException {
         String jsonResponse = response.body().string();
+        Log.d(TAG,jsonResponse);
         switch (requestType) {
             case Constants.RequestTags.UPDATE_TOKEN:
                 try {
@@ -384,6 +385,16 @@ public class SplashActivity extends AppCompatActivity implements IOkHttpNotify {
                             newBookingModel.setMobile(data.getString("mobile"));
                             String json = new Gson().toJson(newBookingModel, NewBookingModel.class);
                             sessionManager.setKeyBookingJson(json);
+                            Bundle bundle = new Bundle();
+                            bundle.putString(Constants.Extras.TYPE,data.getString("type"));
+                            bundle.putInt(Constants.IntentParameters.TYPE, Constants.Extras.FROM_SPLASH);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else if(type.equalsIgnoreCase("underFumigation")){
+                            Intent intent = new Intent(SplashActivity.this, FumigationActivity.class);
+                            sessionManager.setKeyBookingId(data.getString("bookingId"));
                             Bundle bundle = new Bundle();
                             bundle.putString(Constants.Extras.TYPE,data.getString("type"));
                             bundle.putInt(Constants.IntentParameters.TYPE, Constants.Extras.FROM_SPLASH);

@@ -25,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.medulance.driver.App.Constants;
@@ -43,6 +45,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OTPActivity extends AppCompatActivity implements IOkHttpNotify {
 
@@ -286,6 +290,7 @@ public class OTPActivity extends AppCompatActivity implements IOkHttpNotify {
     @Override
     public void onHttpRequestSuccess(String requestType, Response response) throws IOException {
         String jsonResponse = response.body().string();
+        Log.d(TAG,jsonResponse);
         switch (requestType) {
             case Constants.RequestTags.DRIVER_LOGIN:
                 try {
@@ -298,6 +303,8 @@ public class OTPActivity extends AppCompatActivity implements IOkHttpNotify {
                         sessionManager.setKeyName(data.getString("name"));
                         sessionManager.setKeyMobile(data.getString("phone"));
                         sessionManager.setKeyAmbulanceType(data.getString("ambulance_type"));
+                        sessionManager.setAmbulanceID(data.getString("ambulance_id"));
+                        sessionManager.setAmbulanceNO(data.getString("ambulance_number"));
                         sessionManager.setKeyLoginResponse(jsonResponse);
                         runOnUiThread(new Runnable() {
                             @Override
@@ -307,6 +314,7 @@ public class OTPActivity extends AppCompatActivity implements IOkHttpNotify {
                                 checkGps();
                             }
                         });
+                        writeRealtime(data.getString("driver_id"),data.getString("ambulance_id"));
                     } else {
                         final String msg = data.getString("message");
                         runOnUiThread(new Runnable() {
@@ -382,6 +390,26 @@ public class OTPActivity extends AppCompatActivity implements IOkHttpNotify {
                 }
                 break;
         }
+    }
+
+    private void writeRealtime(String driver_id, String ambulance_id) {
+        Log.e("Service","sending "+driver_id);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+        SessionManager sessionManager = MyApplication.getInstance().getSession();
+        myRef = database.getReference("/ambulances/location/"+sessionManager.getAmbulanceID());
+
+        Map<String, Object> childUpdates = new HashMap<>();
+
+        childUpdates.put("lat", "");
+        childUpdates.put("lng", "");
+        childUpdates.put("driver_id", sessionManager.getKeyUserId());
+        childUpdates.put("ambulance_id", sessionManager.getAmbulanceID());
+        childUpdates.put("driver_name", sessionManager.getKeyName());
+        childUpdates.put("ambulance_no", sessionManager.getKeyAmbulanceNo());
+        childUpdates.put("timestamp", (System.currentTimeMillis()/1000));
+
+        myRef.updateChildren(childUpdates);
     }
 
     @Override

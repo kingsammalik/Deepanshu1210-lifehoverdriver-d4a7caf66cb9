@@ -185,6 +185,8 @@ public class ExtraActivity extends AppCompatActivity implements NavigationView.O
 
     private void getLogout() {
         showLoader();
+        Intent myService = new Intent(ExtraActivity.this, SendService.class);
+        stopService(myService);
         okHttpAPICalls.run(Constants.RequestTags.DRIVER_LOGOUT, null);
     }
 

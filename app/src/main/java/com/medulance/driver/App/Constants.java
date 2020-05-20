@@ -53,12 +53,14 @@ public class Constants {
         public static final String GET_FARE= "get_fare";
         public static final String DRIVER_ARRIVE = "driver_arrive";
         public static final String DRIVER_ARRIVED = "driver_arrived";
+        public static final String UPDATE_BOOKING_STATUS = "update_booking_status";
 
     }
 
     public static class Extras {
         public static final long GET_DATA_INTERVAL = 5000;
         public static final String DRIVER = "driver";
+        public static final String DRIVER_ID = "driver_id";
         public static final String APP_TOPIC = "lifehover";
         public static final String MOBILE = "mobile";
         public static final String DEVICE_ID = "device_id";
@@ -132,6 +134,7 @@ public class Constants {
         public static final String URL_CONFIRM_PAYMENT= BASE_URL + PATH + "confirmPayment";
         public static final String URL_GET_FARE = BASE_URL + PATH + "getFare";
         public static final String URL_DRIVER_ARRIVED = BASE_URL + PATH + "driverArrived";
+        public static final String URL_UPDTATE_BOOKING_STATUS = BASE_URL + PATH + "updateBookingStatusById";
     }
 
     public static class NavigationDrawer {

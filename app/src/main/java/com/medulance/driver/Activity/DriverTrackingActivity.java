@@ -128,7 +128,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
     String Payment_Type;
     ProgressBar progressBar;
     String Device;
-    Button accept_cash;
+    Button accept_cash,fumigation;
     private String bookingId;
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
@@ -289,6 +289,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
         ll_stop_ride = (LinearLayout) findViewById(R.id.ll_stop_ride);
         ll_fare_layout = (LinearLayout) findViewById(R.id.ll_fare_layout);
         accept_cash=(Button)findViewById(R.id.accept_cash);
+        fumigation=(Button)findViewById(R.id.fumigation);
         tv_amount_large = (TextView) findViewById(R.id.tv_amount_large);
         tv_ambulance_type = (TextView) findViewById(R.id.tv_ambulance_type);
         tv_total_fare = (TextView) findViewById(R.id.tv_total_fare);
@@ -384,6 +385,8 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
 
     private void getLogout() {
         showLoader();
+        Intent myService = new Intent(DriverTrackingActivity.this, SendService.class);
+        stopService(myService);
         okHttpAPICalls.run(Constants.RequestTags.DRIVER_LOGOUT, null);
     }
 
@@ -819,6 +822,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
     @Override
     public void onHttpRequestSuccess(String requestType, Response response) throws IOException {
         String jsonResponse = response.body().string();
+        Log.d(TAG,jsonResponse);
         switch (requestType) {
             case Constants.RequestTags.START_RIDE:
                 try {
@@ -1137,7 +1141,46 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
                     });
                 }
                 break;
-
+            case Constants.RequestTags.UPDATE_BOOKING_STATUS:
+                try {
+                    JSONObject jsonObject = new JSONObject(jsonResponse);
+                    String status = jsonObject.getString("status");
+                    if (status.equalsIgnoreCase("200")) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.success));
+                                //completeride();
+                                 startActivity(new Intent(DriverTrackingActivity.this, FumigationActivity.class));
+                                //sessionManager.setKeyBookingStatus(0);
+                                finish();
+                            }
+                        });
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.try_again_later));
+                            }
+                        });
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            hideLoader();
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.try_again_later));
+                            hideLoader();
+                        }
+                    });
+                }
+                break;
         }
     }
 
@@ -1182,6 +1225,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
             ll_booking_tracking.setVisibility(View.GONE);
             if(Device.equalsIgnoreCase("A")){
                 accept_cash.setVisibility(View.VISIBLE);
+                fumigation.setVisibility(View.VISIBLE);
                 accept_cash.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -1194,6 +1238,20 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
                         mBundle.putString(Constants.Extras.CASH, "cash");
                         okHttpAPICalls.run(Constants.RequestTags.CONFIRM_PAYMENT,mBundle);
                         //completeride();
+                    }
+                });
+                fumigation.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        progressDialog = new ProgressDialog(DriverTrackingActivity.this);
+                        progressDialog.setCancelable(false);
+                        progressDialog.setMessage(getString(R.string.please_wait));
+                        progressDialog.show();
+                        //bookingId=newBookingModel.getBookingId();
+                        mBundle.putString(Constants.Extras.BOOKINGID, bookingId);
+                        mBundle.putString(Constants.Extras.DRIVER_ID, sessionManager.getKeyUserId());
+                        mBundle.putString(Constants.Extras.STATUS, "5");
+                        okHttpAPICalls.run(Constants.RequestTags.UPDATE_BOOKING_STATUS,mBundle);
                     }
                 });
             }
@@ -1441,6 +1499,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
             unregisterReceiver(receiver);
             registered = false;
         }
+        progressDialog.cancel();
         super.onDestroy();
     }
 

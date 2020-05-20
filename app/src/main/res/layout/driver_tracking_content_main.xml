@@ -200,6 +200,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/xxxx_large_margin"
+            android:visibility="gone"
             android:text="Rs XXXX"
             android:textColor="@color/gray_700"
             android:textSize="@dimen/xxxx_large_txt_size" />
@@ -220,6 +221,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/small_margin"
+            android:visibility="gone"
             android:text="Total Fare : Rs XXXX"
             android:textColor="@color/blue"
             android:textSize="@dimen/large_txt_size" />
@@ -245,7 +247,19 @@
         <Button
             android:id="@+id/accept_cash"
             android:background="@color/blue"
-            android:text="Collect Cash"
+            android:text="SKIP"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/x_dimen_padding"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/fumigation"
+            android:background="@color/blue"
+            android:text="Go for Fumigation"
             android:layout_gravity="center_horizontal"
             android:visibility="gone"
             android:textColor="@color/white"

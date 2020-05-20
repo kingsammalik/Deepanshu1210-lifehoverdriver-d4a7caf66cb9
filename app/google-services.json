@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "348669827980-hqkut7c7r06tksnajnjrkvoiipu5i6vv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.medulance.driver",
+            "certificate_hash": "5c804e6ff57ae84d1c3903f67b2d3d8a22fc201f"
+          }
+        },
+        {
+          "client_id": "348669827980-5ho2hf1d9ah2fuv1snccqqidcqeqanis.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.medulance.driver",
+            "certificate_hash": "0e6048ac6d87fdbba935bf24112d71a1c837806b"
+          }
+        },
+        {
           "client_id": "348669827980-q7cq431891jdse5kmpde2ae45s0st8bd.apps.googleusercontent.com",
           "client_type": 3
         }

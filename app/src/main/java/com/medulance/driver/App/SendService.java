@@ -95,7 +95,7 @@ public class SendService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         sendIntent(location.getLatitude(), location.getLongitude());
-        //sendData(location.getLatitude(), location.getLongitude());
+        sendData(location.getLatitude(), location.getLongitude());
         sendRealData(location.getLatitude(), location.getLongitude());
     }
 
@@ -103,15 +103,18 @@ public class SendService extends Service implements LocationListener {
         Log.e("Service","sending location "+latitude);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
-        //myRef.child("ambulances").child("location").child("5").child("lat");
-        //myRef.setValue(lat);
-
-        myRef = database.getReference("/ambulances/location/5");
+        SessionManager sessionManager = MyApplication.getInstance().getSession();
+        myRef = database.getReference("/ambulances/location/"+sessionManager.getAmbulanceID());
 
         Map<String, Object> childUpdates = new HashMap<>();
 
         childUpdates.put("lat", latitude);
         childUpdates.put("lng", longitude);
+        childUpdates.put("driver_id", sessionManager.getKeyUserId());
+        childUpdates.put("ambulance_id", sessionManager.getAmbulanceID());
+        childUpdates.put("driver_name", sessionManager.getKeyName());
+        childUpdates.put("ambulance_no", sessionManager.getKeyAmbulanceNo());
+        childUpdates.put("timestamp", (System.currentTimeMillis()/1000));
 
         myRef.updateChildren(childUpdates);
     }
