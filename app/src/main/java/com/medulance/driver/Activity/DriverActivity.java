@@ -47,7 +47,6 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.Gson;
 import com.medulance.driver.App.Constants;
 import com.medulance.driver.App.GcmBroadcastReceiver;
@@ -97,7 +96,7 @@ public class DriverActivity extends AppCompatActivity implements View.OnClickLis
     SharedPreferences sharedPreferences;
     CoordinatorLayout relative;
     private Handler hand1 = new Handler();
-    private FirebaseAnalytics mFirebaseAnalytics;
+    //private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +106,7 @@ public class DriverActivity extends AppCompatActivity implements View.OnClickLis
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_driver);
         new UpdateRunnable(this, new Handler()).start();
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        //mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         MyApplication.tracker().send(new HitBuilders.EventBuilder("ui", "open")
                 .setLabel("settings")
                 .build());

@@ -1499,6 +1499,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
             unregisterReceiver(receiver);
             registered = false;
         }
+        if(progressDialog!=null)
         progressDialog.cancel();
         super.onDestroy();
     }

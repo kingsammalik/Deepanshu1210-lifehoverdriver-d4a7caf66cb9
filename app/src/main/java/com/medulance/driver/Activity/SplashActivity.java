@@ -28,7 +28,6 @@ import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
@@ -62,7 +61,7 @@ public class SplashActivity extends AppCompatActivity implements IOkHttpNotify {
     private OKHttpAPICalls okHttpAPICalls;
     private String gcmToken = "";
     Bundle mBundle;
-    private FirebaseAnalytics mFirebaseAnalytics;
+    //private FirebaseAnalytics mFirebaseAnalytics;
     String versionName = "";
 
     @Override
@@ -81,7 +80,7 @@ public class SplashActivity extends AppCompatActivity implements IOkHttpNotify {
         }
         //FirebaseApp.initializeApp(this);
         //
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        //mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         MyApplication.tracker().send(new HitBuilders.EventBuilder("ui", "open")
                 .setLabel("settings")
                 .build());

@@ -66,7 +66,7 @@ public class OKHttpAPICalls {
             case Constants.RequestTags.DRIVER_LOGIN:
                 mUrl = Constants.Urls.URL_DRIVER_LOGIN;
                 mFormEncodingBuilder = new FormEncodingBuilder();
-                mFormEncodingBuilder.add("device_id", "");
+                mFormEncodingBuilder.add("device_id", bundle.getString(Constants.Extras.DEVICE_ID));
                 mFormEncodingBuilder.add("driver_id", bundle.getString(Constants.Extras.DRIVER));
                 mRequestBody = mFormEncodingBuilder.build();
                 LogUtils.d(Constants.Extras.API_LOG, mRequestBody.toString());
@@ -186,7 +186,7 @@ public class OKHttpAPICalls {
                 mUrl=Constants.Urls.URL_UPDATE_TOKEN;
                 mFormEncodingBuilder = new FormEncodingBuilder();
                 mFormEncodingBuilder.add("driver_id", sessionManager.getKeyUserId());
-                mFormEncodingBuilder.add("device_token", "abcd");
+                mFormEncodingBuilder.add("device_token", bundle.getString(Constants.Extras.DEVICE_ID));
                 mFormEncodingBuilder.add("version", bundle.getString(Constants.Extras.VERSION_NAME));
                 mFormEncodingBuilder.add("device_type", "A");
                 mRequestBody = mFormEncodingBuilder.build();

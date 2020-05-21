@@ -250,7 +250,7 @@ public class DialogActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ToastUtils.showLongToast(DialogActivity.this, "Out of India");
+                                    ToastUtils.showLongToast(DialogActivity.this, "Error in Response");
                                 }
                             });
 

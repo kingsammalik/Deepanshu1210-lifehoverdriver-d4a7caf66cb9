@@ -5,9 +5,6 @@ import android.content.Intent;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.medulance.driver.helper.SessionManager;
 
 /**
@@ -27,7 +24,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+        //FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
         mInstance = this;
         sessionManager = new SessionManager(this);
         analytics = GoogleAnalytics.getInstance(this);
