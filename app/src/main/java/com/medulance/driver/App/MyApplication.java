@@ -1,7 +1,10 @@
 package com.medulance.driver.App;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+
+import androidx.multidex.MultiDex;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
@@ -42,6 +45,15 @@ public class MyApplication extends Application {
                 .build();
         FirebaseApp.initializeApp(this, options, "CATS");*/
     }
+
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
+    }
+
+
     public static GoogleAnalytics analytics() {
         return analytics;
     }
