@@ -78,7 +78,7 @@ public class DialogActivity extends AppCompatActivity {
         mediaPlayer.start();
         NewBookingModel newBookingModel = new Gson().fromJson(bookingJson, NewBookingModel.class);
         bookingId = newBookingModel.getBookingId();
-        handler.postDelayed(runnable, 30000);
+        handler.postDelayed(runnable, 60000);
         showDialog(newBookingModel.getBookingId(), newBookingModel.getName(), newBookingModel.getCurrent(), newBookingModel.getDes(), newBookingModel.getBase_price(), newBookingModel.getBase_km(), newBookingModel.getPrice_per_km(), newBookingModel.getBooking_type());
     }
 
