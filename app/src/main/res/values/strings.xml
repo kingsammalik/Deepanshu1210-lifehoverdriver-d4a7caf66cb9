@@ -38,6 +38,7 @@
     <string name="save">SAVE</string>
     <string name="no_booking">No bookings for Now</string>
     <string name="success">Success</string>
+    <string name="next_hospital">Your booking is still in progress. Go to next hospital.</string>
     <string name="otp_soon">You will get a OTP soon..</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="otp">OTP</string>

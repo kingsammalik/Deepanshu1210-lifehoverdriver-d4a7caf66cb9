@@ -54,6 +54,8 @@ public class Constants {
         public static final String DRIVER_ARRIVE = "driver_arrive";
         public static final String DRIVER_ARRIVED = "driver_arrived";
         public static final String UPDATE_BOOKING_STATUS = "update_booking_status";
+        public static final String NEXT_HOSPITAL = "next_hospital";
+        public static final String ARRIVED_DESTINATION = "arrived_destination";
 
     }
 

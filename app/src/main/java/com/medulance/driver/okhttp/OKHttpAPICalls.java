@@ -231,6 +231,28 @@ public class OKHttpAPICalls {
                 doOkHttpPostWithToken(requestType, mUrl, mRequestBody);
                 break;
 
+            case Constants.RequestTags.NEXT_HOSPITAL:
+                mUrl=Constants.Urls.URL_UPDTATE_BOOKING_STATUS;
+                mFormEncodingBuilder = new FormEncodingBuilder();
+                mFormEncodingBuilder.add("driver_id", sessionManager.getKeyUserId());
+                mFormEncodingBuilder.add("booking_id", bundle.getString(Constants.Extras.BOOKINGID));
+                mFormEncodingBuilder.add("status", bundle.getString(Constants.Extras.STATUS) );
+                mRequestBody = mFormEncodingBuilder.build();
+                LogUtils.d(Constants.Extras.API_LOG, mRequestBody.toString());
+                doOkHttpPostWithToken(requestType, mUrl, mRequestBody);
+                break;
+
+            case Constants.RequestTags.ARRIVED_DESTINATION:
+                mUrl=Constants.Urls.URL_UPDTATE_BOOKING_STATUS;
+                mFormEncodingBuilder = new FormEncodingBuilder();
+                mFormEncodingBuilder.add("driver_id", sessionManager.getKeyUserId());
+                mFormEncodingBuilder.add("booking_id", bundle.getString(Constants.Extras.BOOKINGID));
+                mFormEncodingBuilder.add("status", bundle.getString(Constants.Extras.STATUS) );
+                mRequestBody = mFormEncodingBuilder.build();
+                LogUtils.d(Constants.Extras.API_LOG, mRequestBody.toString());
+                doOkHttpPostWithToken(requestType, mUrl, mRequestBody);
+                break;
+
 
         }
     }

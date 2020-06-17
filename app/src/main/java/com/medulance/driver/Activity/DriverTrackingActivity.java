@@ -104,7 +104,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
     private LinearLayout ll_before_start;
     private LinearLayout ll_call_user;
     private LinearLayout ll_start_ride;
-    private LinearLayout ll_stop_ride;
+    private LinearLayout ll_stop_ride,btn_stop_ride,btn_next_hospital,ll_arrived;
     private LinearLayout ll_fare_layout;
     private String TAG = DriverTrackingActivity.class.getSimpleName();
     private double currentLat, currentLng;
@@ -287,6 +287,9 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
         ll_call_user = (LinearLayout) findViewById(R.id.ll_call_user);
         ll_start_ride = (LinearLayout) findViewById(R.id.ll_start_ride);
         ll_stop_ride = (LinearLayout) findViewById(R.id.ll_stop_ride);
+        ll_arrived = (LinearLayout) findViewById(R.id.ll_arrived);
+        btn_next_hospital = (LinearLayout) findViewById(R.id.btn_next_hospital);
+        btn_stop_ride = (LinearLayout) findViewById(R.id.btn_stop_ride);
         ll_fare_layout = (LinearLayout) findViewById(R.id.ll_fare_layout);
         accept_cash=(Button)findViewById(R.id.accept_cash);
         fumigation=(Button)findViewById(R.id.fumigation);
@@ -309,7 +312,9 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
         ll_before_start.setOnClickListener(this);
         ll_call_user.setOnClickListener(this);
         ll_start_ride.setOnClickListener(this);
-        ll_stop_ride.setOnClickListener(this);
+        btn_stop_ride.setOnClickListener(this);
+        btn_next_hospital.setOnClickListener(this);
+        ll_arrived.setOnClickListener(this);
         ll_fare_layout.setOnClickListener(this);
         iv_timer.setOnClickListener(this);
         //btn_done.setOnClickListener(this);
@@ -672,7 +677,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
 
                 }
                 break;
-            case R.id.ll_stop_ride:
+            case R.id.btn_stop_ride:
                 showLoader();
                 mBundle.putString(Constants.Extras.LATITUDE, String.valueOf(currentLat));
                 mBundle.putString(Constants.Extras.LONGITUDE, String.valueOf(currentLng));
@@ -687,13 +692,33 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
                 }
                 okHttpAPICalls.run(Constants.RequestTags.STOP_RIDE, mBundle);
                 break;
+
+                case R.id.btn_next_hospital:
+                showLoader();
+                    //bookingId=newBookingModel.getBookingId();
+                    mBundle.putString(Constants.Extras.BOOKINGID, bookingId);
+                    mBundle.putString(Constants.Extras.DRIVER_ID, sessionManager.getKeyUserId());
+                    mBundle.putString(Constants.Extras.STATUS, "7");
+                    okHttpAPICalls.run(Constants.RequestTags.NEXT_HOSPITAL,mBundle);
+                break;
+
+            case R.id.ll_arrived:
+                showLoader();
+                //bookingId=newBookingModel.getBookingId();
+                mBundle.putString(Constants.Extras.BOOKINGID, bookingId);
+                mBundle.putString(Constants.Extras.DRIVER_ID, sessionManager.getKeyUserId());
+                mBundle.putString(Constants.Extras.STATUS, "6");
+                okHttpAPICalls.run(Constants.RequestTags.ARRIVED_DESTINATION,mBundle);
+                break;
         }
     }
 
     public void setButtonOffAndON(Boolean set){
         ll_call_user.setClickable(set);
         ll_start_ride.setClickable(set);
-        ll_stop_ride.setClickable(set);
+        btn_stop_ride.setClickable(set);
+        btn_next_hospital.setClickable(set);
+        ll_arrived.setClickable(set);
         iv_menu.setClickable(set);
         iv_tracking.setClickable(set);
         iv_timer.setClickable(set);
@@ -1181,6 +1206,83 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
                     });
                 }
                 break;
+
+            case Constants.RequestTags.NEXT_HOSPITAL:
+                try {
+                    JSONObject jsonObject = new JSONObject(jsonResponse);
+                    String status = jsonObject.getString("status");
+                    if (status.equalsIgnoreCase("200")) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.next_hospital));
+                                ll_arrived.setVisibility(View.VISIBLE);
+                                ll_stop_ride.setVisibility(View.GONE);
+                            }
+                        });
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.try_again_later));
+                            }
+                        });
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            hideLoader();
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.try_again_later));
+                            hideLoader();
+                        }
+                    });
+                }
+                break;
+
+            case Constants.RequestTags.ARRIVED_DESTINATION:
+                try {
+                    JSONObject jsonObject = new JSONObject(jsonResponse);
+                    String status = jsonObject.getString("status");
+                    if (status.equalsIgnoreCase("200")) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ll_stop_ride.setVisibility(View.VISIBLE);
+                                ll_arrived.setVisibility(View.GONE);
+                            }
+                        });
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.try_again_later));
+                            }
+                        });
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            hideLoader();
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtils.showLongToast(DriverTrackingActivity.this, getString(R.string.try_again_later));
+                            hideLoader();
+                        }
+                    });
+                }
+                break;
         }
     }
 
@@ -1188,7 +1290,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
         //sessionManager.setKeyBookingStatus(1);
         //whichState = Constants.Extras.BEFORESTARTEDLAYOUT;
         ll_before_start.setVisibility(View.VISIBLE);
-        ll_stop_ride.setVisibility(View.GONE);
+        ll_arrived.setVisibility(View.GONE);
         ll_fare_layout.setVisibility(View.GONE);
         ll_booking_tracking.setVisibility(View.VISIBLE);
     }
@@ -1202,7 +1304,7 @@ public class DriverTrackingActivity extends AppCompatActivity implements Navigat
     private void showRideStartedLayout() {
         whichState = Constants.Extras.STARTEDLAYOUT;
         ll_before_start.setVisibility(View.GONE);
-        ll_stop_ride.setVisibility(View.VISIBLE);
+        ll_arrived.setVisibility(View.VISIBLE);
         ll_fare_layout.setVisibility(View.GONE);
         ll_booking_tracking.setVisibility(View.VISIBLE);
     }

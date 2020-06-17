@@ -143,6 +143,27 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_arrived"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/small_dimen_padding"
+                android:paddingTop="@dimen/small_dimen_padding"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arrived at destination"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/large_txt_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ll_stop_ride"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,20 +174,46 @@
                 android:paddingTop="@dimen/small_dimen_padding"
                 android:visibility="gone">
 
-                <ImageView
+                <LinearLayout
+                    android:id="@+id/btn_next_hospital"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_dot_white"
-                    android:tint="@color/red" />
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Go to Next Hospital"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/large_txt_size"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_stop_ride"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/medium_margin"
-                    android:text="@string/stop_ride"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/large_txt_size"
-                    android:textStyle="bold" />
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_dot_white"
+                        android:tint="@color/red" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/medium_margin"
+                        android:text="@string/stop_ride"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/large_txt_size"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
